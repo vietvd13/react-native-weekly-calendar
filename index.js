@@ -405,7 +405,7 @@ WeeklyCalendar.defaultProps = { // All props are optional
     style: {},
     titleStyle: {},
     dayLabelStyle: {},
-    onChangeWeek: () => {},
+    onChangeWeek: undefined,
 };
 
 export default WeeklyCalendar;
