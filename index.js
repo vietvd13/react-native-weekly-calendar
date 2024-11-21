@@ -203,9 +203,9 @@ const WeeklyCalendar = props => {
                 <TouchableOpacity style={styles.arrowButton} onPress={clickLastWeekHandler}>
                     <Text style={{ color: props.themeColor }}>{'\u25C0'}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setPickerVisible(true)}>
+                <View>
                     <Text style={[styles.title, props.titleStyle]}>{isCalendarReady && displayTitleByLocale(props.locale, selectedDate, props.titleFormat)}</Text>
-                </TouchableOpacity>
+                </View>
                 <TouchableOpacity style={styles.arrowButton} onPress={clickNextWeekHandler}>
                     <Text style={{ color: props.themeColor }}>{'\u25B6'}</Text>
                 </TouchableOpacity>
