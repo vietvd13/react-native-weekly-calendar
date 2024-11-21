@@ -129,8 +129,8 @@ const WeeklyCalendar = props => {
         setCalendarReady(true)
 
         const { startOfWeek, endOfWeek } = getWeekStartAndEnd(lastWeekCurrDate)
-        if (props.onChangeWeek)
-            props.onChangeWeek({
+        if (props.onWeekChanged)
+            props.onWeekChanged({
                 action: "BACK",
                 startOfWeek,
                 endOfWeek
@@ -146,8 +146,8 @@ const WeeklyCalendar = props => {
         setCalendarReady(true)
 
         const { startOfWeek, endOfWeek } = getWeekStartAndEnd(nextWeekCurrDate)
-        if (props.onChangeWeek)
-            props.onChangeWeek({
+        if (props.onWeekChanged)
+            props.onWeekChanged({
                 action: "NEXT",
                 startOfWeek,
                 endOfWeek
@@ -384,7 +384,7 @@ WeeklyCalendar.propTypes = {
     /** Set text style of weekday labels */
     dayLabelStyle: PropTypes.any,
     /** Function to be called when week is changed (start and end dates of week) */
-    onChangeWeek: PropTypes.func,
+    onWeekChanged: PropTypes.func,
 };
 
 WeeklyCalendar.defaultProps = { // All props are optional
@@ -405,7 +405,7 @@ WeeklyCalendar.defaultProps = { // All props are optional
     style: {},
     titleStyle: {},
     dayLabelStyle: {},
-    onChangeWeek: undefined,
+    onWeekChanged: undefined,
 };
 
 export default WeeklyCalendar;
