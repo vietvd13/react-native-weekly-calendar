@@ -79,6 +79,7 @@ All properties are optional.
 | style | `{}` | `object` | Set style of `WeeklyCalendar` component |
 | titleStyle | `{}` | `object` | Set text style of calendar title |
 | dayLabelStyle | `{}` | `object` | Set text style of weekday labels |
+| onChangeWeek | `undefined` | `func` | Callback that is executed when the user changes the week. Receives the new week's start date (as a Moment object) and end date (as a Moment object) as parameters.
 
 ## Customization
 ```javascript
@@ -165,8 +166,28 @@ All properties are optional.
 ```
 ![customized](https://user-images.githubusercontent.com/8908724/77616782-d5614580-6f75-11ea-8736-6e315ad8802d.png)
 
+## Example onChangWeek
+You can listen to the week change event using the onChangeWeek prop, which will be triggered whenever the user navigates to a new week. The function receives the start and end date of the new week as Moment objects.
+```
+<WeeklyCalendar
+  events={sampleEvents}
+  selected='2020-03-23'
+  startWeekday={7}
+  weekdayFormat='ddd'
+  locale='ko'
+  onChangeWeek={(startOfWeek, endOfWeek) => {
+    console.log(`New week selected: Start Date = ${startOfWeek.format('YYYY-MM-DD')}, End Date = ${endOfWeek.format('YYYY-MM-DD')}`);
+  }}
+  themeColor='pink'
+  style={{ height: 400 }}
+  titleStyle={{ color: 'blue' }}
+  dayLabelStyle={{ color: 'green' }}
+/>
+
+```
+
 ## Author
-* [Minjae Oak](https://github.com/codeinjuice/) - [LinkedIn](http://linkedin.com/in/minjae-oak)
+* Forked by [Vũ Đức Việt](https://github.com/vietvd13) from [Minjae Oak](https://github.com/codeinjuice/) - [LinkedIn](http://linkedin.com/in/minjae-oak)
 
 ## License
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
