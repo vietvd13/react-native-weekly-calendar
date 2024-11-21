@@ -127,6 +127,14 @@ const WeeklyCalendar = props => {
         setSelectedDate(lastWeekCurrDate.clone().weekday(props.startWeekday - 7))
         createWeekdays(lastWeekCurrDate.clone(), eventMap)
         setCalendarReady(true)
+
+        const { startOfWeek, endOfWeek } = getWeekStartAndEnd(lastWeekCurrDate)
+        if (props.onChangeWeek)
+            props.onChangeWeek({
+                action: "BACK",
+                startOfWeek,
+                endOfWeek
+            })
     }
 
     const clickNextWeekHandler = () => {
@@ -136,6 +144,20 @@ const WeeklyCalendar = props => {
         setSelectedDate(nextWeekCurrDate.clone().weekday(props.startWeekday - 7))
         createWeekdays(nextWeekCurrDate.clone(), eventMap)
         setCalendarReady(true)
+
+        const { startOfWeek, endOfWeek } = getWeekStartAndEnd(lastWeekCurrDate)
+        if (props.onChangeWeek)
+            props.onChangeWeek({
+                action: "NEXT",
+                startOfWeek,
+                endOfWeek
+            })
+    }
+
+    const getWeekStartAndEnd = (date) => {
+        const startOfWeek = date.clone().startOf('week').format('YYYY-MM-DD')
+        const endOfWeek = date.clone().endOf('week').format('YYYY-MM-DD')
+        return { startOfWeek, endOfWeek }
     }
 
     const isSelectedDate = date => {
@@ -360,7 +382,9 @@ WeeklyCalendar.propTypes = {
     /** Set text style of calendar title */
     titleStyle: PropTypes.any,
     /** Set text style of weekday labels */
-    dayLabelStyle: PropTypes.any
+    dayLabelStyle: PropTypes.any,
+    /** Function to be called when week is changed (start and end dates of week) */
+    onChangeWeek: PropTypes.func,
 };
 
 WeeklyCalendar.defaultProps = { // All props are optional
@@ -381,6 +405,7 @@ WeeklyCalendar.defaultProps = { // All props are optional
     style: {},
     titleStyle: {},
     dayLabelStyle: {},
+    onChangeWeek: () => {},
 };
 
 export default WeeklyCalendar;
