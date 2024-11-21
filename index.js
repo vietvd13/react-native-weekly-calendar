@@ -145,7 +145,7 @@ const WeeklyCalendar = props => {
         createWeekdays(nextWeekCurrDate.clone(), eventMap)
         setCalendarReady(true)
 
-        const { startOfWeek, endOfWeek } = getWeekStartAndEnd(lastWeekCurrDate)
+        const { startOfWeek, endOfWeek } = getWeekStartAndEnd(nextWeekCurrDate)
         if (props.onChangeWeek)
             props.onChangeWeek({
                 action: "NEXT",
